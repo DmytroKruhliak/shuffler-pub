@@ -1,0 +1,9 @@
+target
+
+*.iml
+*.mp3
+.idea
+*.jar
+docs
+# Swagger
+swagger/src/main/webapp/docs/*
