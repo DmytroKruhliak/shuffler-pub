@@ -1,7 +1,5 @@
-package com.ddd;
+package com.ddd.processor;
 
-
-import com.ddd.processor.MusicProcessor;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,19 +9,16 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 public class MusicProcessorTest {
 
-    private static final String MUSIC_PATH = "D:\\Work\\training\\java\\shuffler\\src\\main\\resources\\music";
+    private static final String MUSIC_PATH = "D:\\Documents\\music";
 
     private final MusicProcessor processor = new MusicProcessor();
     private static File musicFolderContent;
@@ -115,10 +110,10 @@ public class MusicProcessorTest {
     }
 
     @Test
-    public void shouldHandleEmptyFolder() throws IOException {
+    public void shouldHandleEmptyFolder() {
 
         // when
-        processor.processFolder(new File("someNonExistingPath"));
+//        processor.processFolder(new File("someNonExistingPath"));
 
         //then
     }

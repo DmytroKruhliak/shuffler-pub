@@ -10,9 +10,9 @@ public class Shuffler {
 
 
     public static void main(String[] args) {
-        File file = new File("D:\\Work\\training\\java\\shuffler\\src\\main\\resources\\music");
-//        File file = new File("D:\\Work\\training\\java\\shuffler\\src\\main\\java\\music");
-//        File file = new File(".\\music");
+//        File file = new File("D:\\Work\\training\\java\\shuffler\\src\\main\\resources\\music");
+        File file = new File("D:\\Documents\\music");
+//        File file = new File("G:\\music");
 
         if (!file.isFile() && !file.isDirectory()) {
             log.warn("Root directory should be 'music', please rename root dir, /n Return.");
@@ -21,8 +21,7 @@ public class Shuffler {
 
         try {
             log.info("Flash drive has valid root folder - 'music' /n Starting the process...");
-            MusicProcessor processor = new MusicProcessor();
-            processor.processFolder(file);
+            new MusicProcessor().processFolder(file);
         } catch (Exception e) {
             log.error("Exception happen during the shuffling process, see stack trace below:");
             e.printStackTrace();
