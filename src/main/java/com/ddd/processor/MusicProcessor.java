@@ -1,15 +1,16 @@
 package com.ddd.processor;
 
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Random;
 import java.util.UUID;
+import java.util.logging.Logger;
 
-@Slf4j
+//@Slf4j
 public class MusicProcessor implements Processable {
+    private Logger log = Logger.getLogger(MusicProcessor.class.getName());
     private static final int LEFT_LIMIT = 97; // letter 'a'
     private static final int RIGHT_LIMIT = 122; // letter 'z'
 
@@ -30,7 +31,7 @@ public class MusicProcessor implements Processable {
         Files.move(song.toPath(), song.toPath().resolveSibling(UUID.randomUUID() + ".mp3"));
     }
 
-    private static String generateRandomString() {
+    private String generateRandomString() {
         Random rnd = new Random();
         int length = 10 + rnd.nextInt(5);
         StringBuilder buffer = new StringBuilder(length);

@@ -1,12 +1,14 @@
 package com.ddd;
 
 import com.ddd.processor.MusicProcessor;
-import lombok.extern.slf4j.Slf4j;
+import com.sun.tools.javac.Main;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@Slf4j
 public class Shuffler {
+    private static final Logger log = Logger.getLogger(Main.class.getName());
 
 
     public static void main(String[] args) {
@@ -15,15 +17,15 @@ public class Shuffler {
 //        File file = new File("G:\\music");
 
         if (!file.isFile() && !file.isDirectory()) {
-            log.warn("Root directory should be 'music', please rename root dir, /n Return.");
+            log.warning("Root directory should be 'music', please rename root dir, \n Return.");
             return;
         }
 
         try {
-            log.info("Flash drive has valid root folder - 'music' /n Starting the process...");
+            log.info("Flash drive has valid root folder - 'music' \n Starting the process...");
             new MusicProcessor().processFolder(file);
         } catch (Exception e) {
-            log.error("Exception happen during the shuffling process, see stack trace below:");
+            log.log(Level.WARNING, "Exception happen during the shuffling process, see stack trace below:");
             e.printStackTrace();
         }
     }
