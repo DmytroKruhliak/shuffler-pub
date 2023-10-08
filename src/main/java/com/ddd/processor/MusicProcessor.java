@@ -4,31 +4,39 @@ package com.ddd.processor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import static java.util.Optional.ofNullable;
+
 //@Slf4j
 public class MusicProcessor implements Processable {
-    private Logger log = Logger.getLogger(MusicProcessor.class.getName());
+    private static final Logger log = Logger.getLogger(MusicProcessor.class.getName());
     private static final int LEFT_LIMIT = 97; // letter 'a'
     private static final int RIGHT_LIMIT = 122; // letter 'z'
 
     @Override
-    public void processFolder(File folder) throws IOException {
-        log.info(folder.getName() + " in process...");
-        for (File file : folder.listFiles()) {
+    public void processFolder(File folder) {
+        log.info(folder.getName() + " in progress...");
+
+        ofNullable(folder.listFiles()).ifPresent(files -> Arrays.asList(files).forEach(file -> {
             if (file.isDirectory()) {
                 processFolder(file);
             } else if (file.getName().endsWith(".mp3")) {
                 renameSong(file);
             }
-        }
+        }));
     }
 
-    private static void renameSong(File song) throws IOException {
+    private static void renameSong(File song) {
         // throws FileAlreadyExistsException, if apply existing name.
-        Files.move(song.toPath(), song.toPath().resolveSibling(UUID.randomUUID() + ".mp3"));
+        try {
+            Files.move(song.toPath(), song.toPath().resolveSibling(UUID.randomUUID() + ".mp3"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String generateRandomString() {

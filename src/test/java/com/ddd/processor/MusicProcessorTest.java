@@ -5,12 +5,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class MusicProcessorTest {
 
-    private static final String MUSIC_PATH = "D:\\Documents\\music";
+    private static final String MUSIC_PATH = "src/test/resources/music";
 
     private final MusicProcessor processor = new MusicProcessor();
     private static File musicFolderContent;
@@ -35,7 +35,7 @@ public class MusicProcessorTest {
     }
 
     @Test
-    void shouldNotChangeFilesStructure() throws IOException {
+    void shouldNotChangeFilesStructure() {
         // given
         String[] fileNames = musicFolderContent.list();
 
@@ -53,7 +53,7 @@ public class MusicProcessorTest {
     }
 
     @Test
-    public void shouldNotRenameFolder() throws IOException {
+    public void shouldNotRenameFolder() {
         // given
         File[] folders = musicFolderContent.listFiles(File::isDirectory);
         assertNotNull(folders);
@@ -81,7 +81,7 @@ public class MusicProcessorTest {
     }
 
     @Test
-    public void shouldRenameFirstFile() throws IOException {
+    public void shouldRenameFirstFile() {
         // given
         File[] musicFiles = musicFolderContent.listFiles(File::isFile);
         assertNotNull(musicFiles);
@@ -111,11 +111,8 @@ public class MusicProcessorTest {
 
     @Test
     public void shouldHandleEmptyFolder() {
-
         // when
-//        processor.processFolder(new File("someNonExistingPath"));
-
-        //then
+        assertDoesNotThrow(() -> processor.processFolder(new File("someNonExistingPath")));
     }
 
     private List<String> getFileNames() {
