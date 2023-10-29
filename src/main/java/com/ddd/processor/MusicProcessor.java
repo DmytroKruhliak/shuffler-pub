@@ -21,13 +21,14 @@ public class MusicProcessor implements Processable {
     public void processFolder(File folder) {
         log.info(folder.getName() + " in progress...");
 
-        ofNullable(folder.listFiles()).ifPresent(files -> Arrays.asList(files).forEach(file -> {
-            if (file.isDirectory()) {
-                processFolder(file);
-            } else if (file.getName().endsWith(".mp3")) {
-                renameSong(file);
-            }
-        }));
+        ofNullable(folder.listFiles()).ifPresent(files ->
+                Arrays.asList(files).forEach(file -> {
+                    if (file.isDirectory()) {
+                        processFolder(file);
+                    } else if (file.getName().endsWith(".mp3")) {
+                        renameSong(file);
+                    }
+                }));
     }
 
     private static void renameSong(File song) {

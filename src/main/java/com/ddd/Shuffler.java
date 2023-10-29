@@ -1,14 +1,13 @@
 package com.ddd;
 
 import com.ddd.processor.MusicProcessor;
-import com.sun.tools.javac.Main;
 
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Shuffler {
-    private static final Logger log = Logger.getLogger(Main.class.getName());
+    private static final Logger log = Logger.getLogger(Shuffler.class.getName());
 
 
     public static void main(String[] args) {
