@@ -12,10 +12,10 @@ public class Shuffler {
 
     public static void main(String[] args) {
 //        File file = new File("D:\\Work\\training\\java\\shuffler\\src\\main\\resources\\music");
-        File file = new File("D:\\Documents\\music");
-//        File file = new File("G:\\music");
+//        File file = new File("D:\\Documents\\music");
+        File file = new File("G:\\music");
 
-        if (!file.isFile() && !file.isDirectory()) {
+        if (!(file.isFile() || file.isDirectory())) {
             log.warning("Root directory should be 'music', please rename root dir, \n Return.");
             return;
         }

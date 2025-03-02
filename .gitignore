@@ -7,3 +7,4 @@ target
 docs
 # Swagger
 swagger/src/main/webapp/docs/*
+/dependency-reduced-pom.xml
