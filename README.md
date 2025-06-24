@@ -15,7 +15,7 @@ Since some audio players sort their list of songs by name, each run of this appl
 
 1) You need to pull it from the git, build it by running a command:  
 `mvn package`  
-the output will be a `.jar` file (probably shuffler.jar) 
+the output will be a `shuffler.jar` file (under the `target` directory) 
 2) After that, place that `shuffler.jar` file into the root folder on your flash card, next to music folder.  
    - Example: Kingston Flash (G:)  
      - ./.Trash-1000
