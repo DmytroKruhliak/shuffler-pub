@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MusicProcessorTest {
 
@@ -56,7 +57,7 @@ public class MusicProcessorTest {
     public void shouldNotRenameFolder() {
         // given
         File[] folders = musicFolderContent.listFiles(File::isDirectory);
-        assertNotNull(folders);
+        assertTrue(folders.length > 0);
 
         List<String> topLevelFolderNames = Arrays.stream(folders)
                 .map(File::getName)
