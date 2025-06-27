@@ -4,7 +4,7 @@ This is a small application was created to shuffle the *.mp3 files by changing t
 Since some audio players sort their list of songs by name, each run of this application will generate a new sequense.
 
 ## Requirements:
- - java 8 installed
+ - java 8
  - mvn 3.8.5
 
 ## Example:
@@ -27,4 +27,3 @@ the output will be a `shuffler.jar` file (under the `target` directory)
 
 ## TODO List:
 - Make script OS independent.
-- Test it on linux.
