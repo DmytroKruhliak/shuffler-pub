@@ -11,17 +11,15 @@ public class Shuffler {
 
 
     public static void main(String[] args) {
-//        File file = new File("D:\\Work\\training\\java\\shuffler\\src\\main\\resources\\music");
-//        File file = new File("D:\\Documents\\music");
-        File file = new File("G:\\music");
+        File file = new File("music");
 
-        if (!(file.isFile() || file.isDirectory())) {
-            log.warning("Root directory should be 'music', please rename root dir, \n Return.");
+        if (!file.exists() || !file.isDirectory()) {
+            log.warning("The 'music' directory was not found in the current directory. Please make sure the 'music' folder is present where the jar is running.");
             return;
         }
 
         try {
-            log.info("Flash drive has valid root folder - 'music' \n Starting the process...");
+            log.info("Found 'music' folder. Starting the process...");
             new MusicProcessor().processFolder(file);
         } catch (Exception e) {
             log.log(Level.WARNING, "Exception happen during the shuffling process, see stack trace below:");
